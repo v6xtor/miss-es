@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missões History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <header class="app-header">
+        <div class="header-content">
+            <h1>Missões History</h1>
+            <div id="digital-clock" class="digital-clock">
+                <span id="clock-time">23:59:59</span>
+                <div class="clock-label">Tempo Restante</div>
+            </div>
+        </div>
+        <div class="progress-container">
+            <div id="daily-progress" class="progress-bar">
+                <div class="progress-fill"></div>
+                <span class="progress-text">0% Completo</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+
+        <section class="missions-section">
+            <div class="priority-missions">
+                <h2>Missões com Prioridades</h2>
+                <div id="priority-list" class="mission-list"></div>
+            </div>
+
+            <div class="daily-missions">
+                <h2>Missões do Dia</h2>
+                <div id="mission-list" class="mission-list"></div>
+            </div>
+            <div class="action-buttons">
+                <button class="add-mission-btn priority-btn" onclick="addMission(true)">🔥✨ Nova Missão com Prioridade</button>
+                <button class="add-mission-btn daily-btn" onclick="addMission(false)">🎯 <span class="btn-icon">+</span> Adicionar Missão</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="add-mission-modal" class="modal">
+        <div class="modal-content">
+            <h2>Nova Missão</h2>
+            <input type="text" id="mission-title" placeholder="Título da missão">
+            <textarea id="mission-description" placeholder="Descrição da missão"></textarea>
+            <div class="modal-buttons">
+                <button onclick="saveMission()">Salvar</button>
+                <button onclick="closeModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="levelUpSound" preload="auto">
+        <source src="levelup.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
