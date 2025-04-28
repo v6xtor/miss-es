@@ -4,7 +4,8 @@ let state = {
     priorityMissions: [],
     dailyProgress: 0,
     lastReset: new Date().toISOString(),
-    history: [] // Histórico de missões completadas
+    history: [], // Histórico de missões completadas
+    selectedDate: new Date()
 };
 
 // Inicialização
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     checkDailyReset();
     startClock();
     renderMissions();
+    initializeCalendar();
+
 });
 
 // Gerenciamento do Relógio
@@ -223,6 +226,37 @@ function createMissionElement(mission, isPriority) {
                 ×
             </button>
         </div>`;
+}
+
+// Template generation/import functions
+function generateTemplate() {
+    const name = document.getElementById('template-name').value.trim();
+    if (!name) {
+        alert('Informe o nome do template');
+        return;
+    }
+    const template = { name, priorityMissions: state.priorityMissions, missions: state.missions };
+    document.getElementById('template-generated-code').value = JSON.stringify(template);
+}
+
+function importTemplate() {
+    const code = document.getElementById('template-code-input').value.trim();
+    if (!code) {
+        alert('Cole o código para importar');
+        return;
+    }
+    try {
+        const template = JSON.parse(code);
+        const titleEl = document.getElementById('template-title');
+        titleEl.textContent = template.name;
+        titleEl.style.display = 'block';
+        state.priorityMissions = template.priorityMissions || [];
+        state.missions = template.missions || [];
+        saveToLocalStorage();
+        renderMissions();
+    } catch (e) {
+        alert('Código inválido. Verifique e tente novamente.');
+    }
 }
 
 // Persistência

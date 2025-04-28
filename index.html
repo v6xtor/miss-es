@@ -12,7 +12,7 @@
     
     <header class="app-header">
         <div class="header-content">
-            <h1>Missões History</h1>
+            <h1>Missões</h1>
             <div id="digital-clock" class="digital-clock">
                 <span id="clock-time">23:59:59</span>
                 <div class="clock-label">Tempo Restante</div>
@@ -28,23 +28,33 @@
 
     <main>
         <div class="main-container">
+            <section class="missions-section">
+                <div class="priority-missions">
+                    <h2>Missões com Prioridades</h2>
+                    <div id="priority-list" class="mission-list"></div>
+                </div>
 
-        <section class="missions-section">
-            <div class="priority-missions">
-                <h2>Missões com Prioridades</h2>
-                <div id="priority-list" class="mission-list"></div>
-            </div>
-
-            <div class="daily-missions">
-                <h2>Missões do Dia</h2>
-                <div id="mission-list" class="mission-list"></div>
-            </div>
-            <div class="action-buttons">
-                <button class="add-mission-btn priority-btn" onclick="addMission(true)">🔥✨ Nova Missão com Prioridade</button>
-                <button class="add-mission-btn daily-btn" onclick="addMission(false)">🎯 <span class="btn-icon">+</span> Adicionar Missão</button>
-            </div>
-        </section>
+                <div class="daily-missions">
+                    <h2>Missões do Dia</h2>
+                    <div id="mission-list" class="mission-list"></div>
+                </div>
+                <div class="action-buttons">
+                    <button class="add-mission-btn priority-btn" onclick="addMission(true)">🔥✨ Nova Missão com Prioridade</button>
+                    <button class="add-mission-btn daily-btn" onclick="addMission(false)">🎯 <span class="btn-icon">+</span> Adicionar Missão</button>
+                </div>
+            </section>
+        </div>
     </main>
+
+    <!-- Easter Egg: Template Controls -->
+    <div id="template-controls" class="template-controls">
+        <input type="text" id="template-name" placeholder="Nome do Template">
+        <button onclick="generateTemplate()">Gerar Código</button>
+        <textarea id="template-generated-code" placeholder="Código gerado" readonly></textarea>
+        <textarea id="template-code-input" placeholder="Cole o código aqui"></textarea>
+        <button onclick="importTemplate()">Importar Código</button>
+    </div>
+    <h2 id="template-title" class="template-title"></h2>
 
     <div id="add-mission-modal" class="modal">
         <div class="modal-content">
